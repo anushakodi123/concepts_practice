@@ -9,15 +9,14 @@ FRUITS = [
 ]
 
 @strawberry.type
-class Fruit:
-    id: strawberry.ID
-    weight: float
-
-@strawberry.type
 class Query:
     @strawberry.field
     def hello(self) -> str:
         return "world"
+@strawberry.type
+class Fruit:
+    id: strawberry.ID
+    weight: float
 
 @strawberry.input
 class UpdateFruitWeightInput:
@@ -30,7 +29,8 @@ class Mutation:
     def update_fruit_weight(
         self,
         info: strawberry.Info,
-        input: UpdateFruitWeightInput
+        id: strawberry.ID,
+        weight: float
     ) -> Optional[Fruit]:
         fruit = next((f for f in FRUITS if f["id"] == input.id), None)
         if fruit is None:
