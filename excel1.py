@@ -7,97 +7,97 @@ wb = Workbook()
 
 ws = wb.active
 
-# ws['A1'] = 45
+ws['A1'] = 45
 
-# wb.save("sample.xlsx")
+wb.save("sample.xlsx")
 
-# ws1 = wb.create_sheet("worksheet1")
+ws1 = wb.create_sheet("worksheet1")
 
-# ws.title = "changed"
-# print(wb.sheetnames)
+ws.title = "changed"
+print(wb.sheetnames)
 
-# target = wb.copy_worksheet(ws)
-# print(wb.sheetnames)
-# print(ws['A1'].value)
+target = wb.copy_worksheet(ws)
+print(wb.sheetnames)
+print(ws['A1'].value)
 
-# d = ws.cell(row=1, column=2, value=10)
-# print(ws['A1':'B1'])
+d = ws.cell(row=1, column=2, value=10)
+print(ws['A1':'B1'])
 
-# colC=ws['C']
-# row10=ws[10]
+colC=ws['C']
+row10=ws[10]
 
-# for row in ws.iter_rows(min_row=1, max_col=2, max_row=2):
-#     for cell in row:
-#         print(cell)
-
-
-# for col in ws.iter_cols(min_row=1, max_col=2, max_row=2):
-#     for cell in col:
-#         print(cell)
-
-# ws = wb.active
-# ws['C9'] = "hello world"
-# print(tuple(ws.rows))
+for row in ws.iter_rows(min_row=1, max_col=2, max_row=2):
+    for cell in row:
+        print(cell)
 
 
-# print(tuple(ws.columns))
+for col in ws.iter_cols(min_row=1, max_col=2, max_row=2):
+    for cell in col:
+        print(cell)
+
+ws = wb.active
+ws['C9'] = "hello world"
+print(tuple(ws.rows))
 
 
-# for row in ws.values:
-#     for value in row:
-#         print(value)
-
-# for row in ws.iter_rows(min_row=1, min_col=2, max_row=2, values_only=True):
-#     print(row)
-
-# wb = load_workbook("sample.xlsx")
-# wb.template = True
-# wb.save("sample.xltx")
+print(tuple(ws.columns))
 
 
-# with NamedTemporaryFile() as f:
-#     wb.save(f.name)
-#     f.seek(0)
-#     stream =f.read()
+for row in ws.values:
+    for value in row:
+        print(value)
 
-# # wb = Workbook()
-# # wb = load_workbook(filename="sample.xlsx")
-# # sheet_ranges = wb['range names']
-# # print(sheet_ranges['D18'].value)
+for row in ws.iter_rows(min_row=1, min_col=2, max_row=2, values_only=True):
+    print(row)
 
+wb = load_workbook("sample.xlsx")
+wb.template = True
+wb.save("sample.xltx")
+
+
+with NamedTemporaryFile() as f:
+    wb.save(f.name)
+    f.seek(0)
+    stream =f.read()
 
 # wb = Workbook()
-# ws = wb.active
-# treeData = [["Type", "Leaf Color", "Height"], ["Maple", "Red", 549], ["Oak", "Green", 783], ["Pine", "Green", 1204]]
-
-# for row in treeData:
-#     ws.append(row)
-
-# ft = Font(bold=True)
-# for row in ws["A1:C1"]:
-#     for cell in row:
-#         cell.font = ft
-
-# chart = BarChart()
-# chart.type = "col"
-# chart.title = "Tree Height"
-# chart.y_axis.title = 'Height (cm)'
-# chart.x_axis.title = 'Tree Type'
-# chart.legend = None
-
-# data = Reference(ws, min_col=3, min_row=2, max_row=4, max_col=3)
-# categories = Reference(ws, min_col=1, min_row=2, max_row=4, max_col=1)
+# wb = load_workbook(filename="sample.xlsx")
+# sheet_ranges = wb['range names']
+# print(sheet_ranges['D18'].value)
 
 
-# chart.add_data(data)
-# chart.set_categories(categories)
+wb = Workbook()
+ws = wb.active
+treeData = [["Type", "Leaf Color", "Height"], ["Maple", "Red", 549], ["Oak", "Green", 783], ["Pine", "Green", 1204]]
+
+for row in treeData:
+    ws.append(row)
+
+ft = Font(bold=True)
+for row in ws["A1:C1"]:
+    for cell in row:
+        cell.font = ft
+
+chart = BarChart()
+chart.type = "col"
+chart.title = "Tree Height"
+chart.y_axis.title = 'Height (cm)'
+chart.x_axis.title = 'Tree Type'
+chart.legend = None
+
+data = Reference(ws, min_col=3, min_row=2, max_row=4, max_col=3)
+categories = Reference(ws, min_col=1, min_row=2, max_row=4, max_col=1)
 
 
-# ws.add_chart(chart, "E1")
-# wb.save("TreeData.xlsx")
+chart.add_data(data)
+chart.set_categories(categories)
 
 
-# # wb = load_workbook("sample.xlsx")
+ws.add_chart(chart, "E1")
+wb.save("TreeData.xlsx")
+
+
+# wb = load_workbook("sample.xlsx")
 ws = wb.active
 
 a1 = ws['A1']
